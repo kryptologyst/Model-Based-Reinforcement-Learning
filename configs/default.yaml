@@ -1,0 +1,47 @@
+# Default configuration for model-based reinforcement learning
+
+# Environment settings
+env:
+  name: "CartPole-v1"
+  max_steps_per_episode: 200
+  seed: 42
+
+# Agent settings
+agent:
+  type: "PETS"  # Options: PETS, MBPO
+  state_dim: 4
+  action_dim: 1
+  hidden_dim: 256
+  num_networks: 5
+  horizon: 10
+  num_candidates: 1000
+  num_iterations: 5
+  learning_rate: 0.001
+  batch_size: 256
+
+# Training settings
+training:
+  max_episodes: 1000
+  eval_frequency: 50
+  save_frequency: 100
+  log_dir: "logs"
+  device: "auto"  # auto, cuda, mps, cpu
+  seed: 42
+
+# Evaluation settings
+evaluation:
+  num_eval_episodes: 100
+  confidence_level: 0.95
+
+# Model settings
+model:
+  type: "ensemble"  # Options: ensemble, probabilistic
+  dropout_rate: 0.1
+  min_std: 0.01
+
+# Logging settings
+logging:
+  level: "INFO"
+  use_tensorboard: true
+  use_wandb: false
+  wandb_project: "model-based-rl"
